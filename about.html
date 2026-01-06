@@ -5,63 +5,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About Us | eNani Digital Tools</title>
-    <meta name="description"
-        content="eNani Digital Tools is Zululand's local digital partner. We help rural businesses grow online from Vryheid and Ulundi.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;700&family=Inter:wght@400;500;600&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
-    <style>
-        .page-header {
-            background-color: var(--color-primary);
-            color: var(--color-white);
-            padding: 60px 0;
-            text-align: center;
-        }
-
-        .page-header h1 {
-            color: var(--color-white);
-            margin-bottom: 10px;
-            font-size: 2rem;
-        }
-
-        .about-story {
-            padding: 80px 0;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .about-story p {
-            margin-bottom: 20px;
-            font-size: 1.1rem;
-        }
-
-        .values-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 40px;
-            margin-top: 60px;
-            text-align: center;
-        }
-
-        .value-card h3 {
-            margin-bottom: 10px;
-            font-size: 1.25rem;
-        }
-
-        .value-icon {
-            font-size: 2.5rem;
-            margin-bottom: 15px;
-            display: block;
-        }
-
-        .cta-box {
-            background-color: var(--color-secondary);
-            padding: 60px 0;
-            text-align: center;
-            margin-top: 60px;
-        }
-    </style>
 </head>
 
 <body>
@@ -72,65 +21,42 @@
             <a href="index.html" class="nav-logo">
                 <img src="assets/logo.png" alt="eNani Digital Tools">
             </a>
-            <button class="mobile-menu-btn">☰</button>
+            <button class="mobile-menu-btn" aria-label="Toggle Menu">☰</button>
             <div class="nav-links">
                 <a href="index.html" class="nav-link">Home</a>
                 <a href="services.html" class="nav-link">Services</a>
-                <a href="pricing.html" class="nav-link">Pricing</a>
+                <a href="services.html#upgrade" class="nav-link">Upgrade</a>
+                <a href="index.html#sectors" class="nav-link">Sectors</a>
                 <a href="about.html" class="nav-link" style="color: var(--color-accent);">About</a>
-                <a href="portfolio.html" class="nav-link">Portfolio</a>
-                <a href="contact.html" class="btn btn-primary">Get Quote</a>
+                <a href="contact.html" class="btn btn-primary">Assessment</a>
             </div>
         </div>
     </nav>
 
     <header class="page-header">
-        <div class="container">
-            <h1>Zululand's Digital Partner</h1>
-            <p>Serving Vryheid, Ulundi, and surrounding districts.</p>
+        <div class="container fade-in">
+            <h1>Partnering in Zululand’s economic future.</h1>
         </div>
     </header>
 
     <section class="container">
-        <div class="about-story">
-            <h2 class="mb-3 text-center">Built for Rural Businesses</h2>
-            <p>eNani Digital Tools was founded to serve businesses like yours in Vryheid, Ulundi, and across Zululand
-                District. We noticed a problem: local businesses were being ignored by big city agencies or overcharged
-                for services they didn't understand.</p>
-            <p>We understand rural business challenges. Internet can be spotty. Budgets are tight. You need someone you
-                can call, not a ticket system.</p>
-            <p>That's why we built our services around <strong>your needs</strong>:</p>
+        <div style="max-width: 800px; margin: 0 auto; font-size: 1.1rem; line-height: 1.8;" class="fade-in">
+            <p class="mb-2">eNani Digital Tools is based in Ncotshane Township, Pongola, and works with clients across
+                Zululand and KwaZulu-Natal. We support local economic development by providing the digital
+                infrastructure that enterprises, cooperatives, and development programmes need to grow.</p>
 
-            <div class="values-grid">
-                <div class="value-card">
-                    <span class="value-icon">📍</span>
-                    <h3>Local Support</h3>
-                    <p>We are here. Same-day response on WhatsApp.</p>
-                </div>
-                <div class="value-card">
-                    <span class="value-icon">💰</span>
-                    <h3>Fair Pricing</h3>
-                    <p>20-30% cheaper than Durban agencies.</p>
-                </div>
-                <div class="value-card">
-                    <span class="value-icon">🤖</span>
-                    <h3>Smart Tech</h3>
-                    <p>AI technology made simple for non-tech businesses.</p>
-                </div>
-                <div class="value-card">
-                    <span class="value-icon">🎓</span>
-                    <h3>Training</h3>
-                    <p>We teach you everything so you own your success.</p>
-                </div>
+            <div
+                style="background: var(--color-secondary); padding: 30px; border-radius: 8px; border-left: 4px solid var(--color-accent); margin: 30px 0;">
+                <p><strong>Our work complements:</strong></p>
+                <ul style="list-style-type: disc; padding-left: 20px; font-size: 1rem;">
+                    <li>The Zululand District Growth and Development Plan.</li>
+                    <li>The province’s agriculture and rural development priorities.</li>
+                    <li>National efforts to strengthen township and rural economies.</li>
+                </ul>
             </div>
-        </div>
-    </section>
 
-    <section class="cta-box">
-        <div class="container">
-            <h2 class="mb-2">Ready to grow your business?</h2>
-            <p class="mb-3">Let's grab a coffee (or a Zoom call) and discuss your goals.</p>
-            <a href="contact.html" class="btn btn-primary">Contact Us</a>
+            <p>We focus on listening to local context, co-designing practical digital solutions, building capacity
+                through training, and providing long-term support.</p>
         </div>
     </section>
 
@@ -139,40 +65,30 @@
         <div class="container">
             <div class="footer-grid">
                 <div>
-                    <h3 class="mb-1" style="color: var(--color-primary)">eNani Digital Tools</h3>
-                    <p>Serving Zululand businesses from Vryheid & Ulundi.</p>
+                    <h3 class="mb-1">eNani Digital Tools</h3>
+                    <p>Serving Zululand businesses.</p>
                 </div>
                 <div>
-                    <h4 class="mb-1" style="font-size: 1.1rem;">Services</h4>
+                    <h4 class="mb-1">Links</h4>
                     <ul style="opacity: 0.8;">
-                        <li><a href="pricing.html">Website Packages</a></li>
-                        <li><a href="services.html">AI Chatbots</a></li>
-                        <li><a href="services.html">Maintenance</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="contact.html">Contact</a></li>
                     </ul>
                 </div>
                 <div>
-                    <h4 class="mb-1" style="font-size: 1.1rem;">Contact</h4>
+                    <h4 class="mb-1">Contact</h4>
                     <ul style="opacity: 0.8;">
-                        <li>📞 071 234 5678</li>
-                        <li>📧 info@enani.co.za</li>
-                        <li>🌍 Vryheid, KwaZulu-Natal</li>
+                        <li>WhatsApp: +27 74 556 1634</li>
+                        <li>Pongola, Zululand</li>
                     </ul>
                 </div>
             </div>
-            <div
-                style="margin-top: 40px; border-top: 1px solid rgba(0,0,0,0.1); padding-top: 20px; font-size: 0.9rem; text-align: center; opacity: 0.6;">
-                © 2026 eNani Digital Tools. All rights reserved.
+            <div style="font-size: 0.9rem; text-align: center; opacity: 0.6; margin-top: 40px;">
+                © 2026 eNani Digital Tools.
             </div>
         </div>
     </footer>
-
-    <a href="https://wa.me/27712345678" target="_blank" class="sticky-whatsapp">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M3 21l1.65-3.8a9 9 0 1 1 3.4 2.9L3 21" />
-        </svg>
-        Chat with Us
-    </a>
 
     <script src="js/script.js"></script>
 </body>
