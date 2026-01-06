@@ -398,3 +398,12 @@ section {
     flex-direction: column;
   }
 }
+
+/* Desktop Grid Fixes */
+@media (min-width: 992px) {
+
+  .hero-services-grid,
+  .services-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
