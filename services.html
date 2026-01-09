@@ -5,8 +5,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Services | eNani Digital Tools</title>
-    <meta name="description"
-        content="Website design, upgrades, and AI services for Zululand businesses. Inclusive pricing and local support.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -17,7 +15,6 @@
 
 <body>
 
-    <!-- Navbar -->
     <nav class="navbar">
         <div class="container nav-container">
             <a href="index.html" class="nav-logo">
@@ -26,123 +23,144 @@
             <button class="mobile-menu-btn" aria-label="Toggle Menu">☰</button>
             <div class="nav-links">
                 <a href="index.html" class="nav-link">Home</a>
-                <a href="services.html" class="nav-link" style="color: var(--color-accent);">Services</a>
-                <a href="#upgrade" class="nav-link">Upgrade</a>
-                <a href="index.html#sectors" class="nav-link">Sectors</a>
+                <a href="services.html" class="nav-link active">Services</a>
+                <a href="sectors.html" class="nav-link">Sectors</a>
+                <a href="government.html" class="nav-link">Government</a>
                 <a href="about.html" class="nav-link">About</a>
-                <a href="contact.html" class="btn btn-primary">Assessment</a>
+                <a href="contact.html" class="btn btn-primary">Get Quote</a>
             </div>
         </div>
     </nav>
 
     <header class="page-header">
         <div class="container fade-in">
-            <h1>Our Services</h1>
-            <p>Tailored digital infrastructure for sustainable business growth.</p>
+            <h1>Grow your business with digital tools.</h1>
+            <p>From modern websites to AI-powered business audits. Solutions aligned to your industry.</p>
         </div>
     </header>
 
-    <section class="container" style="padding-bottom: 40px;">
-        <div class="hero-services-grid" style="margin-top: 0;">
+    <!-- Service 1: Website Design -->
+    <section class="container">
+        <div class="section-header fade-in">
+            <h2>Website Design & New Builds</h2>
+            <p>Get found online. Serve customers 24/7. Mobile-responsive, SEO-ready sites designed to generate leads.
+            </p>
+        </div>
 
-            <!-- Service 1 -->
-            <div class="hero-service-card fade-in delay-100">
-                <h3>Website Design & New Builds</h3>
-                <p class="mb-2">For businesses and programmes that need their first or a brand-new website.</p>
-                <ul style="font-size: 0.95rem; margin-bottom: 20px;">
-                    <li class="mb-1"><strong>Basic (R8k-R12k):</strong> 5 pages, mobile-ready.</li>
-                    <li class="mb-1"><strong>Standard (R12k-R18k):</strong> Lead-gen, 10 pages, analytics.</li>
-                    <li class="mb-1"><strong>Premium (R18k-R25k):</strong> E-commerce or bookings.</li>
+        <div class="services-grid mb-4">
+            <div class="service-card fade-in delay-100">
+                <h3>Basic</h3>
+                <div class="service-price">R8k – R12k</div>
+                <p class="mb-2">Professional online presence.</p>
+                <ul>
+                    <li>5 pages</li>
+                    <li>Mobile-ready design</li>
+                    <li>WhatsApp button</li>
+                    <li>Local SEO setup</li>
                 </ul>
-                <a href="contact.html" class="btn btn-outline">Launch Project</a>
+                <a href="contact.html" class="btn btn-outline">Select Basic</a>
             </div>
-
-            <!-- Service 2 (Upgrade) -->
-            <div class="hero-service-card fade-in delay-200" style="border-top: 4px solid var(--color-primary);">
-                <h3>Website Upgrade & Migration</h3>
-                <p class="mb-2">For organisations with outdated, slow, or hard-to-manage sites.</p>
-                <ul style="font-size: 0.95rem; margin-bottom: 20px;">
-                    <li class="mb-1">UX review aligned with LED identity.</li>
-                    <li class="mb-1">Performance optimisation.</li>
-                    <li class="mb-1">Migration from legacy platforms (Wix, GitHub).</li>
+            <div class="service-card fade-in delay-200">
+                <h3>Standard</h3>
+                <div class="service-price">R12k – R18k</div>
+                <p class="mb-2">Lead-generation focused.</p>
+                <ul>
+                    <li>10 pages</li>
+                    <li>Blog/News section</li>
+                    <li>Analytics dashboard</li>
+                    <li>Lead capture forms</li>
                 </ul>
-                <a href="#upgrade" class="btn btn-primary">Book Upgrade</a>
+                <a href="contact.html" class="btn btn-primary">Select Standard</a>
             </div>
-
-            <!-- Service 3 (AI) -->
-            <div class="hero-service-card fade-in delay-300">
-                <h3>AI Chatbots & Digital Support</h3>
-                <p class="mb-2">Improving service delivery and communication.</p>
-                <ul style="font-size: 0.95rem; margin-bottom: 20px;">
-                    <li class="mb-1">WhatsApp + Website Chatbots.</li>
-                    <li class="mb-1">Automated booking handling.</li>
-                    <li class="mb-1">Improved market linkage.</li>
+            <div class="service-card fade-in delay-300">
+                <h3>Premium</h3>
+                <div class="service-price">R18k – R25k</div>
+                <p class="mb-2">Advanced functionality.</p>
+                <ul>
+                    <li>E-commerce or Bookings</li>
+                    <li>Payment integration</li>
+                    <li>Staff training</li>
+                    <li>Advanced SEO</li>
                 </ul>
-                <a href="contact.html" class="btn btn-outline">Discuss AI</a>
+                <a href="contact.html" class="btn btn-outline">Select Premium</a>
             </div>
         </div>
     </section>
 
-    <!-- Detailed Upgrade Section (Anchored) -->
-    <section id="upgrade" class="upgrade-section">
+    <!-- Service 2: AI Audit (Featured) -->
+    <section class="section-bg-beige">
         <div class="container">
-            <div class="text-center mb-4 fade-in">
-                <h2>Upgrade your existing website</h2>
-                <p style="color: rgba(255,255,255,0.9); max-width: 700px; margin: 0 auto;">Many local enterprises and
-                    programmes have websites that don't reflect current goals. We offer a structured upgrade path.</p>
+            <div class="section-header fade-in">
+                <h2>AI & Business Digitisation Audit</h2>
+                <p>Unlock hidden efficiency. Automate your bottlenecks.</p>
             </div>
 
-            <div class="hero-services-grid"
-                style="margin-top: 40px; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));">
-                <div style="background: rgba(255,255,255,0.1); padding: 20px; border-radius: 8px; color: white;">
-                    <h3 style="color: var(--color-accent);">01 Assessment</h3>
-                    <p style="font-size: 0.9rem; opacity: 0.9;">Review design, accessibility, and analytics setup.</p>
+            <div style="background: white; padding: 40px; border-radius: 16px; box-shadow: var(--shadow-lg);"
+                class="fade-in">
+                <div style="max-width: 800px; margin: 0 auto; text-align: center; margin-bottom: 40px;">
+                    <p style="font-size: 1.1rem; margin-bottom: 20px;">Your business relies on people for tasks machines
+                        can do better. Our digitisation audit identifies exactly where AI and automation save time,
+                        reduce errors, and improve compliance.</p>
+                    <a href="contact.html" class="btn btn-primary">Schedule a free 30-minute discovery call</a>
                 </div>
-                <div style="background: rgba(255,255,255,0.1); padding: 20px; border-radius: 8px; color: white;">
-                    <h3 style="color: var(--color-accent);">02 Strategy</h3>
-                    <p style="font-size: 0.9rem; opacity: 0.9;">Align with local economic development and branding.</p>
-                </div>
-                <div style="background: rgba(255,255,255,0.1); padding: 20px; border-radius: 8px; color: white;">
-                    <h3 style="color: var(--color-accent);">03 Redesign</h3>
-                    <p style="font-size: 0.9rem; opacity: 0.9;">Modern UI, mobile-first, faster load times.</p>
-                </div>
-                <div style="background: rgba(255,255,255,0.1); padding: 20px; border-radius: 8px; color: white;">
-                    <h3 style="color: var(--color-accent);">04 Launch</h3>
-                    <p style="font-size: 0.9rem; opacity: 0.9;">Migration, testing, and staff training.</p>
-                </div>
-            </div>
 
-            <div class="text-center mt-4 fade-in">
-                <a href="contact.html" class="btn btn-secondary">Request Health Report</a>
+                <div class="process-steps" style="margin-top: 0;">
+                    <div class="step-card" style="background: var(--color-light-grey); border-color: transparent;">
+                        <h3 style="color: var(--color-primary); font-size: 1.2rem;">Phase 1: Discovery</h3>
+                        <p style="color: var(--color-text);">Process mapping & workflow analysis.</p>
+                    </div>
+                    <div class="step-card" style="background: var(--color-light-grey); border-color: transparent;">
+                        <h3 style="color: var(--color-primary); font-size: 1.2rem;">Phase 2: Analysis</h3>
+                        <p style="color: var(--color-text);">Identify bottlenecks & automation ROI.</p>
+                    </div>
+                    <div class="step-card" style="background: var(--color-light-grey); border-color: transparent;">
+                        <h3 style="color: var(--color-primary); font-size: 1.2rem;">Phase 3: Roadmap</h3>
+                        <p style="color: var(--color-text);">Prioritised implementation plan.</p>
+                    </div>
+                </div>
+
+                <div class="text-center mt-4">
+                    <p style="font-size: 0.9rem; opacity: 0.7;"><strong>Pricing:</strong> Audits from R15k.
+                        Implementation tailored to sector.</p>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
+    <!-- Service 3: Upgrade -->
+    <section class="container">
+        <div class="section-header fade-in">
+            <h2>Website Upgrade & Migration</h2>
+            <p>Modernise your digital presence. Don't rebuild from scratch.</p>
+        </div>
+        <div class="text-center fade-in">
+            <p class="mb-3">We audit, redesign, and relaunch—keeping what works, improving what doesn't. Includes
+                migration from Wix/WordPress.</p>
+            <a href="contact.html" class="btn btn-outline" style="margin-bottom: 40px;">Book a health report</a>
+        </div>
+    </section>
+
     <footer class="footer">
         <div class="container">
             <div class="footer-grid">
                 <div>
                     <h3 class="mb-1">eNani Digital Tools</h3>
-                    <p>Serving Zululand businesses.</p>
+                    <p>Zululand's Digital Partner.</p>
                 </div>
                 <div>
-                    <h4 class="mb-1">Links</h4>
-                    <ul style="opacity: 0.8;">
-                        <li><a href="services.html">Services</a></li>
-                        <li><a href="about.html">About</a></li>
-                        <li><a href="contact.html">Contact</a></li>
+                    <h4 class="mb-1">Services</h4>
+                    <ul>
+                        <li><a href="services.html">Web Design</a></li>
+                        <li><a href="services.html">AI Audits</a></li>
+                        <li><a href="services.html">Upgrades</a></li>
                     </ul>
                 </div>
                 <div>
                     <h4 class="mb-1">Contact</h4>
-                    <ul style="opacity: 0.8;">
-                        <li>WhatsApp: +27 74 556 1634</li>
-                        <li>Pongola, Zululand</li>
-                    </ul>
+                    <p>066 132 1810</p>
                 </div>
             </div>
-            <div style="font-size: 0.9rem; text-align: center; opacity: 0.6; margin-top: 40px;">
+            <div class="text-center mt-4" style="font-size: 0.9rem; opacity: 0.6;">
                 © 2026 eNani Digital Tools.
             </div>
         </div>
