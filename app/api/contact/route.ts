@@ -11,24 +11,32 @@ export async function POST(req: Request) {
             return NextResponse.json({ message: 'Name and Email are required' }, { status: 400 });
         }
 
-        let serviceAccount;
+        let serviceAccount: any;
         try {
-            const jsonStr = process.env.GOOGLE_SERVICE_ACCOUNT_JSON;
-            const b64 = process.env.GOOGLE_SERVICE_ACCOUNT_B64;
-
-            if (jsonStr) {
-                // Prioritize direct JSON string as requested
-                serviceAccount = JSON.parse(jsonStr);
-            } else if (b64) {
-                // Fallback to base64 if available
-                const decoded = Buffer.from(b64, 'base64').toString('utf8');
+            // Priority 1: Individual Environment Variables (as requested)
+            if (process.env.GOOGLE_PROJECT_ID && process.env.GOOGLE_CLIENT_EMAIL && process.env.GOOGLE_PRIVATE_KEY) {
+                serviceAccount = {
+                    project_id: process.env.GOOGLE_PROJECT_ID,
+                    client_email: process.env.GOOGLE_CLIENT_EMAIL,
+                    private_key: process.env.GOOGLE_PRIVATE_KEY.replace(/\\n/g, '\n'), // Handle newline characters
+                    client_id: process.env.GOOGLE_CLIENT_ID,
+                    type: 'service_account',
+                };
+            }
+            // Priority 2: Full JSON string
+            else if (process.env.GOOGLE_SERVICE_ACCOUNT_JSON) {
+                serviceAccount = JSON.parse(process.env.GOOGLE_SERVICE_ACCOUNT_JSON);
+            }
+            // Priority 3: Base64 string
+            else if (process.env.GOOGLE_SERVICE_ACCOUNT_B64) {
+                const decoded = Buffer.from(process.env.GOOGLE_SERVICE_ACCOUNT_B64, 'base64').toString('utf8');
                 serviceAccount = JSON.parse(decoded);
             } else {
                 throw new Error('No Google credentials found in environment');
             }
         } catch (error: any) {
-            console.error('Credential Decode Error:', error);
-            return NextResponse.json({ message: 'Server Configuration Error', error: 'Invalid Credentials Format' }, { status: 500 });
+            console.error('Credential parsing error:', error);
+            return NextResponse.json({ message: 'Server Configuration Error', error: 'Could not parse credentials' }, { status: 500 });
         }
 
         const auth = new google.auth.GoogleAuth({
