@@ -13,13 +13,18 @@ export async function POST(req: Request) {
 
         let serviceAccount;
         try {
+            const jsonStr = process.env.GOOGLE_SERVICE_ACCOUNT_JSON;
             const b64 = process.env.GOOGLE_SERVICE_ACCOUNT_B64;
-            if (b64) {
-                const jsonStr = Buffer.from(b64, 'base64').toString('utf8');
+
+            if (jsonStr) {
+                // Prioritize direct JSON string as requested
                 serviceAccount = JSON.parse(jsonStr);
+            } else if (b64) {
+                // Fallback to base64 if available
+                const decoded = Buffer.from(b64, 'base64').toString('utf8');
+                serviceAccount = JSON.parse(decoded);
             } else {
-                // Fallback for legacy format if needed
-                serviceAccount = JSON.parse(process.env.GOOGLE_SERVICE_ACCOUNT_JSON || '{}');
+                throw new Error('No Google credentials found in environment');
             }
         } catch (error: any) {
             console.error('Credential Decode Error:', error);
