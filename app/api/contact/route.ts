@@ -7,19 +7,24 @@ export async function POST(req: Request) {
         const body = await req.json();
         const { name, email, phone, package: selectedPackage, message } = body;
 
-        console.log('API Request received:', { name, email });
-        console.log('Env Check:', {
-            hasProjectId: !!process.env.GOOGLE_PROJECT_ID,
-            hasClientEmail: !!process.env.GOOGLE_CLIENT_EMAIL,
-            hasPrivateKey: !!process.env.GOOGLE_PRIVATE_KEY,
-            hasSheetId: !!process.env.GOOGLE_SHEET_ID
-        });
-
         if (!email || !name) {
             return NextResponse.json({ message: 'Name and Email are required' }, { status: 400 });
         }
 
-        const serviceAccount = JSON.parse(process.env.GOOGLE_SERVICE_ACCOUNT_JSON || '{}');
+        let serviceAccount;
+        try {
+            const b64 = process.env.GOOGLE_SERVICE_ACCOUNT_B64;
+            if (b64) {
+                const jsonStr = Buffer.from(b64, 'base64').toString('utf8');
+                serviceAccount = JSON.parse(jsonStr);
+            } else {
+                // Fallback for legacy format if needed
+                serviceAccount = JSON.parse(process.env.GOOGLE_SERVICE_ACCOUNT_JSON || '{}');
+            }
+        } catch (error: any) {
+            console.error('Credential Decode Error:', error);
+            return NextResponse.json({ message: 'Server Configuration Error', error: 'Invalid Credentials Format' }, { status: 500 });
+        }
 
         const auth = new google.auth.GoogleAuth({
             credentials: serviceAccount,
@@ -29,8 +34,6 @@ export async function POST(req: Request) {
         const sheets = google.sheets({ version: "v4", auth });
         const spreadsheetId = process.env.GOOGLE_SHEET_ID;
         const range = "ContactInquiries!A:F";
-
-        console.log('Attempting to append to sheet:', { spreadsheetId, range });
 
         await sheets.spreadsheets.values.append({
             spreadsheetId,
@@ -50,11 +53,9 @@ export async function POST(req: Request) {
             },
         });
 
-        console.log('Successfully appended to sheet');
-
         return NextResponse.json({ message: 'Success' }, { status: 200 });
     } catch (error: any) {
-        console.error('Contact API Error Detail:', error);
+        console.error('Contact API Error:', error);
         return NextResponse.json({ message: 'Internal Server Error', error: error.message }, { status: 500 });
     }
 }
