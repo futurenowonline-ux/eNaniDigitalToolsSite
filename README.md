@@ -1,52 +1,36 @@
-# eNani Digital Tools Website
+This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-Professional agency website for **eNani Digital Tools**, serving rural businesses in Zululand, South Africa.
-Built with performance and simplicity in mind for Namecheap shared hosting or any static environment.
+## Getting Started
 
-![eNani Logo](assets/logo.png)
+First, run the development server:
 
-## 🚀 Live Demo
-[View on GitHub Pages](https://futurenowonline-ux.github.io/eNaniDigitalToolsSite/)
-
-## ✨ Features
-- **Mobile-First Design**: Optimized for Zululand's mobile-dominant market (90% traffic).
-- **Blazing Fast**: Pure HTML/CSS/JS with zero frameworks or runtime overhead. < 1s Load Time.
-- **SEO Optimized**: Includes `sitemap.xml`, `robots.txt`, and local schema markup.
-- **Client-Side Forms**: Configured for `mailto:` (easily upgradeable to Formspree).
-- **Zero Dependencies**: No `npm install` required. Just upload and run.
-
-## 🛠️ Tech Stack
-- **Core**: HTML5, CSS3, Vanilla JavaScript (ES6)
-- **Styling**: Custom CSS Variables (Black/Beige/Teal Theme)
-- **Fonts**: Inter (via Google Fonts)
-- **Hosting**: Namecheap Shared Hosting (Compatible with standard cPanel)
-
-## 📂 Project Structure
-```
-/
-├── index.html       # Home Page
-├── services.html    # Services Breakdown
-├── pricing.html     # Packages Table
-├── about.html       # Company Story
-├── portfolio.html   # Case Studies
-├── contact.html     # Contact Form
-├── css/
-│   └── style.css    # Global Styles & Variables
-├── js/
-│   └── script.js    # Mobile Menu & Interactions
-└── assets/          # Images & Logo
+```bash
+npm run dev
+# or
+yarn dev
+# or
+pnpm dev
+# or
+bun dev
 ```
 
-## 📦 Deployment
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-### Option 1: GitHub Pages (Testing)
-1.  Go to Settings > Pages.
-2.  Select `main` branch and save.
+You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-### Option 2: Namecheap / CPanel (Production)
-1.  Zip all files in this directory.
-2.  Upload to `public_html` in File Manager.
-3.  Extract. Done!
+This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
-## © Copyright
-2026 eNani Digital Tools. All Rights Reserved.
+## Learn More
+
+To learn more about Next.js, take a look at the following resources:
+
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+
+## Deploy on Vercel
+
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
