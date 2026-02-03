@@ -7,6 +7,7 @@ import { motion } from "framer-motion";
 export default function Contact() {
     const [isSending, setIsSending] = useState(false);
     const [isSent, setIsSent] = useState(false);
+    const [error, setError] = useState<string | null>(null);
     const [formData, setFormData] = useState({
         name: "",
         email: "",
@@ -20,6 +21,7 @@ export default function Contact() {
         setIsSending(true);
 
         try {
+            setError(null);
             const res = await fetch("/api/contact", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
@@ -28,9 +30,13 @@ export default function Contact() {
 
             if (res.ok) {
                 setIsSent(true);
+            } else {
+                const data = await res.json();
+                setError(data.message || "Something went wrong. Please try again.");
             }
-        } catch (error) {
-            console.error("Contact form error:", error);
+        } catch (err: any) {
+            console.error("Contact form error:", err);
+            setError("Failed to connect to the server. Please check your internet.");
         } finally {
             setIsSending(false);
         }
@@ -180,6 +186,12 @@ export default function Contact() {
                                         className="w-full px-5 py-4 rounded-2xl border-2 border-primary/5 focus:border-accent outline-none text-sm transition-all bg-secondary/30 focus:bg-white resize-none"
                                     ></textarea>
                                 </div>
+
+                                {error && (
+                                    <div className="bg-red-50 text-red-600 p-4 rounded-xl text-sm font-semibold border border-red-100 animate-shake">
+                                        ⚠️ {error}
+                                    </div>
+                                )}
 
                                 <button
                                     disabled={isSending}

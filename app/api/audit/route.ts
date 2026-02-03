@@ -11,21 +11,10 @@ export async function POST(req: Request) {
             return NextResponse.json({ message: 'Email is required' }, { status: 400 });
         }
 
-        // Format the private key
-        let privateKey = process.env.GOOGLE_PRIVATE_KEY || "";
-        privateKey = privateKey.trim();
-        if (privateKey.startsWith('"') && privateKey.endsWith('"')) {
-            privateKey = privateKey.substring(1, privateKey.length - 1);
-        }
-        privateKey = privateKey.replace(/\\n/g, "\n");
+        const serviceAccount = JSON.parse(process.env.GOOGLE_SERVICE_ACCOUNT_JSON || '{}');
 
         const auth = new google.auth.GoogleAuth({
-            // eslint-disable-next-line @typescript-eslint/no-explicit-any
-            credentials: {
-                client_email: process.env.GOOGLE_CLIENT_EMAIL,
-                private_key: privateKey,
-                project_id: process.env.GOOGLE_PROJECT_ID,
-            } as any,
+            credentials: serviceAccount,
             scopes: ["https://www.googleapis.com/auth/spreadsheets"],
         });
 
