@@ -34,7 +34,7 @@ export default function Contact() {
                 const data = await res.json();
                 setError(data.message || "Something went wrong. Please try again.");
             }
-        } catch (err: any) {
+        } catch (err: unknown) {
             console.error("Contact form error:", err);
             setError("Failed to connect to the server. Please check your internet.");
         } finally {
