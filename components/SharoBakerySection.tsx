@@ -19,7 +19,7 @@ export default function SharoBakerySection() {
                     </h2>
                     <p className="text-lg opacity-70 mb-10 max-w-2xl">
                         A masterclass in digital transformation for a local Pongola startup.
-                        <strong> &ldquo;Powered by eNani&rdquo;</strong>
+                        <strong> &ldquo;Powered by eNani Digital Tools&rdquo;</strong>
                     </p>
                     <Link href="https://www.sharobakery.co.za" target="_blank" className="px-10 py-4 glass-button-dark text-white rounded-full font-bold transition-all shadow-xl hover:shadow-2xl flex items-center gap-2">
                         Visit Live Site <ArrowRight size={20} />
