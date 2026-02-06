@@ -4,6 +4,7 @@ import BentoGrid from "@/components/BentoGrid";
 import AuditSection from "@/components/AuditSection";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import MobileCTA from "@/components/MobileCTA";
+import SharoBakerySection from "@/components/SharoBakerySection";
 
 export default function Home() {
   return (
@@ -50,6 +51,9 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Full Width Sharo Bakery Section */}
+      <SharoBakerySection />
+
       {/* Audit Section */}
       <section id="audit" className="bg-secondary/50 py-24">
         <div className="container mx-auto px-6">
@@ -63,6 +67,6 @@ export default function Home() {
 
       <WhatsAppButton />
       <MobileCTA />
-    </main>
+    </main >
   );
 }

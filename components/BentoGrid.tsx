@@ -73,45 +73,7 @@ export default function BentoGrid() {
                 </div>
             </div>
 
-            {/* 5. Sharo Bakery Feature (Below Tiers) */}
-            <div className="bento-item-wide glass-card p-10 rounded-2xl hover-glow transition-all relative overflow-hidden group bg-white border border-black/5">
-                <div className="absolute inset-0 opacity-5 group-hover:scale-105 transition-transform duration-700 bg-[url('/assets/sharo-desktop.png')] bg-cover bg-center" />
-                <div className="relative z-10 flex flex-col md:flex-row justify-between items-center gap-12">
-                    <div className="text-center md:text-left flex-1">
-                        <span className="inline-block px-3 py-1 bg-primary text-white text-[10px] font-bold uppercase tracking-wider rounded-full mb-4">
-                            Case Study
-                        </span>
-                        <h3 className="text-3xl font-bold mb-4 font-heading text-primary">Sharo Bakery</h3>
-                        <p className="opacity-70 text-sm max-w-md mb-8">
-                            A masterclass in digital transformation for a local Pongola startup. <strong>&ldquo;Powered by eNani&rdquo;</strong>
-                        </p>
-                        <Link href="https://www.sharobakery.co.za" target="_blank" className="px-8 py-3 glass-button-dark text-white rounded-xl font-bold transition-all inline-block shadow-lg">
-                            Visit Live Site
-                        </Link>
-                    </div>
 
-                    <div className="flex-1 relative h-[250px] w-full max-w-[400px] hidden md:block">
-                        {/* Desktop Shortcut */}
-                        <div className="absolute top-0 right-0 w-[80%] aspect-video rounded-lg overflow-hidden border border-black/10 shadow-2xl transition-transform group-hover:-translate-y-2 duration-500">
-                            <Image
-                                src="/assets/sharo-desktop.png"
-                                alt="Sharo Bakery Desktop View"
-                                fill
-                                className="object-cover"
-                            />
-                        </div>
-                        {/* Mobile Shortcut */}
-                        <div className="absolute -bottom-4 left-4 w-[25%] aspect-[9/19.5] rounded-xl overflow-hidden border-4 border-white shadow-2xl transition-transform group-hover:translate-x-2 duration-700">
-                            <Image
-                                src="/assets/sharo-mobile.png"
-                                alt="Sharo Bakery Mobile View"
-                                fill
-                                className="object-cover"
-                            />
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
     );
 }
