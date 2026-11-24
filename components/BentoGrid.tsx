@@ -64,7 +64,7 @@ export default function BentoGrid() {
                         </span>
                         <h3 className="text-2xl font-bold mb-2 font-heading text-primary">Free Website Health Audit</h3>
                         <p className="opacity-70 text-sm">
-                            Is your current website losing you money? Get an instant report on speed, mobile-readiness, and SEO. Perfect for upgrades.
+                            Is your current website losing you money? Get a real report on speed, mobile-readiness, and SEO in under a minute.
                         </p>
                     </div>
                     <Link href="#audit" className="inline-flex items-center text-primary font-extrabold group-hover:gap-2 transition-all shrink-0">

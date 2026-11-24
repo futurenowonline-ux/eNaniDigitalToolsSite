@@ -59,7 +59,7 @@ export default function Home() {
         <div className="container mx-auto px-6">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-4 font-heading">Free Website Health Audit</h2>
-            <p className="opacity-70 max-w-xl mx-auto">Is your current website losing you money? Get an instant report on speed, mobile-readiness, and SEO.</p>
+            <p className="opacity-70 max-w-xl mx-auto">Is your current website losing you money? Enter your address and get a real Google Lighthouse report on speed, mobile-readiness, and SEO in under a minute.</p>
           </div>
           <AuditSection />
         </div>

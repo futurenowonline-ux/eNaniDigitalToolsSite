@@ -1,59 +1,26 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-import { google } from 'googleapis';
-import { NextResponse } from 'next/server';
+import { NextResponse } from "next/server";
+import { AuditError, normaliseUrl, runAudit } from "@/lib/pagespeed";
+import { clean, rateLimited, readJson, tooMany } from "@/lib/guard";
+
+// A Lighthouse run on a slow site can take 30s+.
+export const maxDuration = 60;
 
 export async function POST(req: Request) {
+    if (rateLimited(req, "audit", 4, 10 * 60 * 1000)) return tooMany();
+
+    const body = await readJson(req);
+    const url = normaliseUrl(clean(body?.url, 300));
+    if (!url) {
+        return NextResponse.json({ message: "Please enter a valid website address, e.g. yourbusiness.co.za" }, { status: 400 });
+    }
+
     try {
-        const body = await req.json();
-        const { email, totalScore, percentage, message } = body;
-
-        if (!email) {
-            return NextResponse.json({ message: 'Email is required' }, { status: 400 });
+        return NextResponse.json(await runAudit(url));
+    } catch (error) {
+        if (error instanceof AuditError) {
+            return NextResponse.json({ message: error.message }, { status: error.status });
         }
-
-        let serviceAccount;
-        try {
-            const b64 = process.env.GOOGLE_SERVICE_ACCOUNT_B64;
-            if (b64) {
-                const jsonStr = Buffer.from(b64, 'base64').toString('utf8');
-                serviceAccount = JSON.parse(jsonStr);
-            } else {
-                serviceAccount = JSON.parse(process.env.GOOGLE_SERVICE_ACCOUNT_JSON || '{}');
-            }
-        } catch (error: any) {
-            console.error('Audit Credential Error:', error);
-            return NextResponse.json({ message: 'Server Configuration Error', error: 'Invalid Credentials Format' }, { status: 500 });
-        }
-
-        const auth = new google.auth.GoogleAuth({
-            credentials: serviceAccount,
-            scopes: ["https://www.googleapis.com/auth/spreadsheets"],
-        });
-
-        const sheets = google.sheets({ version: "v4", auth });
-        const spreadsheetId = process.env.GOOGLE_SHEET_ID;
-        const range = "AuditLeads!A:E";
-
-        await sheets.spreadsheets.values.append({
-            spreadsheetId,
-            range,
-            valueInputOption: "USER_ENTERED",
-            requestBody: {
-                values: [
-                    [
-                        new Date().toLocaleString('en-ZA', { timeZone: 'Africa/Johannesburg' }),
-                        email,
-                        totalScore,
-                        percentage + '%',
-                        message
-                    ],
-                ],
-            },
-        });
-
-        return NextResponse.json({ message: 'Success' }, { status: 200 });
-    } catch (error: any) { // eslint-disable-line @typescript-eslint/no-explicit-any
-        console.error('Audit API Error:', error);
-        return NextResponse.json({ message: 'Internal Server Error', error: error.message }, { status: 500 });
+        console.error("Audit API error:", error);
+        return NextResponse.json({ message: "Something went wrong running the audit. Please try again." }, { status: 500 });
     }
 }

@@ -10,7 +10,7 @@ export default function MobileCTA() {
                 href="#audit"
                 className="w-full bg-accent text-white py-3 rounded-xl font-bold flex items-center justify-center gap-2"
             >
-                Start Your AI Audit <ArrowRight size={18} />
+                Free Website Audit <ArrowRight size={18} />
             </Link>
         </div>
     );

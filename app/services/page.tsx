@@ -91,8 +91,8 @@ export default function Services() {
                             <p className="text-xs opacity-60">Analyzing search engine visibility.</p>
                         </div>
                         <div className="bg-primary/5 p-6 rounded-2xl border border-black/5 w-full md:w-64">
-                            <h4 className="font-bold text-primary mb-2">Conversion</h4>
-                            <p className="text-xs opacity-60">Finding UX friction points.</p>
+                            <h4 className="font-bold text-primary mb-2">Mobile &amp; Accessibility</h4>
+                            <p className="text-xs opacity-60">Checking it works for everyone, on every phone.</p>
                         </div>
                     </div>
                     <Link href="/#audit" className="inline-block mt-12 px-10 py-4 glass-button-dark text-white rounded-full font-bold hover:scale-105 transition-transform">
