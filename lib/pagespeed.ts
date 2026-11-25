@@ -14,9 +14,12 @@ export type AuditReport = {
 
 export class AuditError extends Error {
     status: number;
-    constructor(message: string, status: number) {
+    /** Short, non-sensitive code shown beside the error so the cause can be identified without server logs. */
+    ref?: string;
+    constructor(message: string, status: number, ref?: string) {
         super(message);
         this.status = status;
+        this.ref = ref;
     }
 }
 
@@ -94,18 +97,33 @@ export async function runAudit(url: string): Promise<AuditReport> {
     api.searchParams.set("url", url);
     api.searchParams.set("strategy", "mobile");
     for (const [id] of CATEGORIES) api.searchParams.append("category", id);
-    if (process.env.PAGESPEED_API_KEY) api.searchParams.set("key", process.env.PAGESPEED_API_KEY);
+    // Trim: a stray space or newline pasted into the hosting dashboard makes Google reject the key.
+    const key = process.env.PAGESPEED_API_KEY?.trim();
+    if (key) api.searchParams.set("key", key);
+    else console.error("PAGESPEED_API_KEY is not set for this deployment; using the shared keyless quota.");
 
     let res: Response;
     try {
         res = await fetch(api, { signal: AbortSignal.timeout(55_000), cache: "no-store" });
     } catch {
-        throw new AuditError("The audit took too long. Your site may be very slow or offline — WhatsApp us and we'll check it by hand.", 504);
+        throw new AuditError("The audit took too long. Your site may be very slow or offline — WhatsApp us and we'll check it by hand.", 504, "T1");
     }
 
-    if (res.status === 429 || res.status === 403) {
-        console.error("PageSpeed quota/key problem:", res.status, (await res.text()).slice(0, 300));
-        throw new AuditError("Our audit tool is busy right now. Please try again shortly, or WhatsApp us your website address and we'll audit it for you.", 503);
+    if (res.status === 429 || res.status === 403 || (res.status === 400 && key)) {
+        const body = (await res.text()).slice(0, 500);
+        console.error("PageSpeed quota/key problem:", res.status, body);
+        // K1: no key configured. K2: Google refused the key. K3: the key's own quota is used up.
+        // K4: Google says the key is invalid (wrong or mangled value).
+        let ref = "K3";
+        if (!key) ref = "K1";
+        else if (res.status === 403) ref = "K2";
+        else if (res.status === 400) {
+            if (!/API key not valid|API_KEY_INVALID/i.test(body)) {
+                throw new AuditError("We couldn't reach that website. Please check the address and try again.", 422);
+            }
+            ref = "K4";
+        }
+        throw new AuditError("Our audit tool is busy right now. Please try again shortly, or WhatsApp us your website address and we'll audit it for you.", 503, ref);
     }
     if (!res.ok) {
         console.error("PageSpeed error:", res.status, (await res.text()).slice(0, 300));

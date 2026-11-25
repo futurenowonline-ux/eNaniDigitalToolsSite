@@ -18,7 +18,7 @@ export async function POST(req: Request) {
         return NextResponse.json(await runAudit(url));
     } catch (error) {
         if (error instanceof AuditError) {
-            return NextResponse.json({ message: error.message }, { status: error.status });
+            return NextResponse.json({ message: error.message, ref: error.ref }, { status: error.status });
         }
         console.error("Audit API error:", error);
         return NextResponse.json({ message: "Something went wrong running the audit. Please try again." }, { status: 500 });

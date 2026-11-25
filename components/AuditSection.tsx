@@ -57,7 +57,7 @@ export default function AuditSection() {
             });
             const data = await res.json().catch(() => ({}));
             if (res.ok) setReport(data);
-            else setError(data.message || "Something went wrong. Please try again.");
+            else setError((data.message || "Something went wrong. Please try again.") + (data.ref ? ` (ref ${data.ref})` : ""));
         } catch {
             setError("Couldn't connect. Please check your internet and try again.");
         } finally {
