@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { PHONE_DISPLAY_INTL, whatsappUrl } from "@/lib/site";
 
 export default function Footer() {
     return (
@@ -32,8 +33,8 @@ export default function Footer() {
                     <h4 className="font-bold mb-4 opacity-80">Contact</h4>
                     <ul className="space-y-2 opacity-60 text-sm">
                         <li>
-                            <a href="https://wa.me/27788385838" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">
-                                WhatsApp: +27 78 838 5838
+                            <a href={whatsappUrl()} target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">
+                                WhatsApp: {PHONE_DISPLAY_INTL}
                             </a>
                         </li>
                         <li>Ncotshane Township, Pongola</li>

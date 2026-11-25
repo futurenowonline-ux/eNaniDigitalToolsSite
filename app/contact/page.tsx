@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { Mail, Phone, MapPin, Send, Clock, Loader2, CheckCircle2 } from "lucide-react";
 import { motion } from "framer-motion";
+import { PHONE_DISPLAY, PHONE_TEL_HREF, whatsappUrl } from "@/lib/site";
 
 export default function Contact() {
     const [isSending, setIsSending] = useState(false);
@@ -13,7 +14,8 @@ export default function Contact() {
         email: "",
         phone: "",
         package: "Startup (R5,000)",
-        message: ""
+        message: "",
+        website: ""
     });
 
     const handleSubmit = async (e: React.FormEvent) => {
@@ -31,7 +33,7 @@ export default function Contact() {
             if (res.ok) {
                 setIsSent(true);
             } else {
-                const data = await res.json();
+                const data = await res.json().catch(() => ({}));
                 setError(data.message || "Something went wrong. Please try again.");
             }
         } catch (err: unknown) {
@@ -76,7 +78,7 @@ export default function Contact() {
                                     </div>
                                     <div>
                                         <h4 className="font-bold text-primary">Call or WhatsApp</h4>
-                                        <a href="tel:+27661321810" className="opacity-60 text-sm block hover:text-accent transition-colors">066 132 1810</a>
+                                        <a href={PHONE_TEL_HREF} className="opacity-60 text-sm block hover:text-accent transition-colors">{PHONE_DISPLAY}</a>
                                     </div>
                                 </div>
 
@@ -109,7 +111,9 @@ export default function Contact() {
                                 Not sure where to start? Book a 15-minute consultation to discuss your business needs.
                             </p>
                             <a
-                                href="https://wa.me/27788385838?text=I'd%20like%20to%20book%20a%20discovery%20call"
+                                href={whatsappUrl("I'd like to book a discovery call")}
+                                target="_blank"
+                                rel="noopener noreferrer"
                                 className="inline-flex items-center gap-3 px-6 py-3 bg-white/10 backdrop-blur-md border border-white/20 text-white rounded-full font-bold hover:scale-105 transition-all"
                                 style={{ backgroundColor: 'rgba(37, 211, 102, 0.8)' }}
                             >
@@ -186,6 +190,18 @@ export default function Contact() {
                                         className="w-full px-5 py-4 rounded-2xl border-2 border-primary/5 focus:border-accent outline-none text-sm transition-all bg-secondary/30 focus:bg-white resize-none"
                                     ></textarea>
                                 </div>
+
+                                {/* Honeypot: hidden from people, filled in by bots */}
+                                <input
+                                    type="text"
+                                    name="website"
+                                    tabIndex={-1}
+                                    autoComplete="off"
+                                    aria-hidden="true"
+                                    value={formData.website}
+                                    onChange={(e) => setFormData({ ...formData, website: e.target.value })}
+                                    className="hidden"
+                                />
 
                                 {error && (
                                     <div className="bg-red-50 text-red-600 p-4 rounded-xl text-sm font-semibold border border-red-100 animate-shake">
